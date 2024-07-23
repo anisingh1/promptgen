@@ -1,0 +1,340 @@
+{
+    "trigger": "Give your solution as follows. Wrap it with ```python```.\n",
+    "regular_requirement": "Please make sure your refined solution is functionally equivalent with the original solution and do not change the input-output format and the name of the major components.\n",
+    "correctness_testcase_feedback":[
+        {
+            "instruction": "Your generated solution for the problem is not correct and cannot pass the following test case:\n\n{testcase}\n\nCould you please modify your solution so that it can fulfill the requirements in the problem and pass the above test case?\n[trigger]",
+            "instruction_parameters":[
+                "testcase"
+            ],
+            "condition": "failed_testcase",
+            "repeat": true,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": true
+        },
+        {
+            "instruction": "Your generated solution for the problem is not correct and cannot pass the following test case:\n\n{testcase}\n\nThe error message is as follows:\"\n{error}\"\n\nCould you please modify your solution so that it can fulfill the requirements in the problem and do not have any syntax error?\n[trigger]",
+            "instruction_parameters":[
+                "testcase",
+                "error"
+            ],
+            "condition": "runtime_error",
+            "repeat": true,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": true
+        },
+        {
+            "instruction": "Your generated solution for the problem is not correct and cannot be parsed because of syntax errors or timeout when running testcases.\nCould you please modify your solution so that it can fulfill the requirements in the problem and do not have any syntax error?\n[trigger]",
+            "instruction_parameters":[],
+            "condition": "parse_error",
+            "repeat": true,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": true
+        }
+    ],
+    "correctness_reflection_and_feedback": [
+        {
+            "instruction": "Your generated solution for the problem is not correct and cannot pass the following test case:\n\n{testcase}\n\nCould you please analyze the reason of failure and propose a strategy to modify your solution so that it can pass the above test case?\n",
+            "instruction_parameters":[
+                "testcase"
+            ],
+            "condition": "failed_testcase",
+            "repeat": true,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": false
+        },
+        {
+            "instruction": "Your generated solution for the problem is not correct and cannot pass the following test case:\n\n{testcase}\n\nThe error message is as follows:\n\"{error}\"\n\nCould you please analyze the reason of failure and propose a strategy to modify your solution so that it can pass the above test case?\n",
+            "instruction_parameters":[
+                "testcase",
+                "error"
+            ],
+            "condition": "runtime_error",
+            "repeat": true,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": false
+        },
+        {
+            "instruction": "Your generated solution for the problem is not correct and cannot be parsed because of syntax errors or timeout when running testcases.\nCould you please analyze the reason of failure and propose a strategy to modify your solution so that it can pass the above test case?\n",
+            "instruction_parameters":[],
+            "condition": "parse_error",
+            "repeat": true,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": false
+        },
+        {
+            "instruction": "Could you please modify your solution so that it can fulfill the requirements in the problem and pass the test case?\n[trigger]",
+            "instruction_parameters":[],
+            "condition": null,
+            "repeat": true,
+            "role": "coder",
+            "rd": 1,
+            "samples": false,
+            "code": true
+        }
+    ],
+    "time_simple_instruction":[
+        {
+            "instruction": "Good job! You generated the correct solution for the problem! Now let's step further and optimize the time performance of the solution.\nBased on the correctly generated solution, could you please refine it so that it consumes less time in the execution?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters":[],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": true
+        }
+    ],
+    "time_in_context_learning":[
+        {
+            "instruction": "Good job! You generated the correct solution for the problem! Now let's step further and optimize the time performance of the solution.\nHere are some examples of optimization:\n\n{demo}\n\nBased on the correctly generated solution and the above examples, could you please refine it so that it consumes less time in the execution?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters":[
+                "demo"
+            ],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": true
+        }
+    ],
+    "time_pre_defined_strategy":[
+        {
+            "instruction": "Good job! You generated the correct solution for the problem! Now let's step further and optimize the time performance of the solution.\nHere are some commonly used strategies for optimization:\n1. Do not generate useless testing code.\n2. Use builtin functions and libraries instead of importing third-party libraries.\n3. Use list and dict comprehension to avoid loops.\n4. Eliminate unnecessary variable definitions, function definitions and print statements.\n5. Optimize the loops to avoid unnecessary iterations.\n6. Use local variables instead of global variables.\n7. Use multiple assignments in one statement instead of in multiple statements.\n8. Make use of generators.\n\nBased on the correctly generated solution and the above strategies, could you please refine it so that it consumes less time in the execution?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters":[],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": true
+        }
+    ],
+    "time_chain_of_thought":[
+        {
+            "instruction": "Good job! You generated the correct solution for the problem! Now let's step further and optimize the time performance of the solution.\nCould you please propose a strategy to optimize the generated solution so that it consumes less time in the execution?\n",
+            "instruction_parameters": [],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": false
+        },
+        {
+            "instruction": "Please implement the strategy you proposed for the previous solution and generate the optimized solution.\n[regular_requirement]\n[trigger]",
+            "instruction_parameters": [],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 1,
+            "samples": false,
+            "code": true
+        }
+    ],
+    "time_time_complexity_reduction":[
+        {
+            "instruction": "Good job! You generated the correct solution for the problem! Now let's step further and optimize the time performance of the solution.\nCould you please analyze the time complexity of the solution?\n",
+            "instruction_parameters": [],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": false
+        },
+        {
+            "instruction": "Now given the time complexity you estimated, could you please optimize your solution by reducing its time complexity?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters": [],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 1,
+            "samples": false,
+            "code": true
+        }
+
+    ],
+    "time_simple_execution_feedback":[
+        {
+            "instruction": "Good job! You generated the correct solution for the problem! Now let's step further and optimize the time performance of the solution.\nBased on the correctly generated solution, could you please refine it so that it consumes less time in the execution?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters": [],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": true
+        },
+        {
+            "instruction": "We tested your optimized solution and found that your optimized solution runs slower than the previous version. The following is the execution time for both solutions:\nOriginal solution:\n{ori_time}\nYour optimized solution:\n{opt_time}\n\nBased on the execution time and the original solution, could you please propose another optimized solution so that it consumes less time than the original solution?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters": [
+                "ori_time",
+                "opt_time"
+            ],
+            "condition": "negative",
+            "repeat": false,
+            "role": "coder",
+            "rd": 1,
+            "samples": false,
+            "code": true
+        },
+        {
+            "instruction": "We test your optimized program. Great! It runs faster than the original program.\nThe following is the execution time for both solutions:\nOriginal solution:\n{ori_time}\nYour optimized solution:\n{opt_time}\n\nCan you refine the current optimized version as follows and provide a more efficient one?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters": [
+                "ori_time",
+                "opt_time"
+            ],
+            "condition": "positive",
+            "repeat": false,
+            "role": "coder",
+            "rd": 1,
+            "samples": false,
+            "code": true
+        }
+    ],
+    "time_execution_feedback_with_testcase":[
+        {
+            "instruction": "Good job! You generated the correct solution for the problem! Now let's step further and optimize the time performance of the solution.\nBased on the correctly generated solution, could you please refine it so that it consumes less time in the execution?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters": [],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": true
+        },
+        {
+            "instruction": "We tested your optimized program and found that the following test case costs the most time in execution.\n{testcase}\n\nCould you please refine your optimized program according to the test case below?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters": [
+                "testcase"
+            ],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 1,
+            "samples": false,
+            "code": true
+        }
+    ],
+    "time_multiple_agents_with_reviewer":[
+        {
+            "instruction": "Good job! You generated the correct solution for the problem! Now let's step further and optimize the time performance of the solution.\nBased on the correctly generated solution, could you please refine it so that it consumes less time in the execution?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters": [],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 0,
+            "samples": false,
+            "code": true
+        },
+        {
+            "instruction": "You are in a discussion group, aiming to optimize a Python program so that it runs faster.\nThe original Python program is:\n{program}\n\nAn optimized Python program given by your group member:\n{opt_program}\n\nYou are a reviewer. Based on your knowledge, can you check whether the optimized program given by your group member runs faster than the original program?\nYou response should follow the following rules:\n1. Begin your response with [Agree] if you think the optimized program really runs faster than the original one and [Disagree] if not or there exists some syntax errors in the optimized program.\n2. Provide your comments after the keyword \"Comment:\" to explain your decision.\n3. Give suggestions for further improvements in comments.\nGive your response here:\n",
+            "instruction_parameters": [
+                "program",
+                "opt_program"
+            ],
+            "condition": null,
+            "repeat": false,
+            "role": "reviewer",
+            "rd": 1,
+            "samples": false,
+            "code": false
+        },
+        {
+            "demo": "",
+            "instruction": "A code reviewer carefully reviewed your optimized code solution. He thinks that your optimization is {decision}.\nPlease refer to his comments as follows to further refine your optimized program.\nComments:\n{comment}\n[regular_requirement]\n[trigger]",
+            "demo_parameters": [],
+            "instruction_parameters": [
+                "decision",
+                "comment"
+            ],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 2,
+            "samples": false,
+            "code": true
+        }
+    ],
+    "time_multiple_agents_with_team": [
+        {
+            "instruction": "You are a team leader and your team is working on the code of the following problem:\n{problem}\n\nHere is the correct solution your team wrote before:\n{program}\n\nGiven the Python program, can you make a plan about how to optimize it step by step?\nGive your plan here:\n",
+            "instruction_parameters": [
+                "problem",
+                "program"
+            ],
+            "condition": null,
+            "repeat": false,
+            "role": "leader",
+            "rd": 0,
+            "samples": true,
+            "code": false
+        },
+        {
+            "instruction": "Given the previous Python program, your leader has proposed the following plan to optimize it:\n{plan}\n\nFollowing the above plan, can you write an optimized version of the original Python program?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters": [
+                "plan"
+            ],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 1,
+            "samples": false,
+            "code": true
+        },
+        {
+            "instruction": "You are a code reviewer in a team and your team is trying to optimize the following Python program so that it runs faster.\nOriginal Python program:\n{program}\n\nGiven the Python program, your leader has proposed the following plan to optimize it:\n{plan}\n\nThe coder in your team implemented an optimized version of program as follows.\n{opt_program}\n\nBased on your knowledge, can you check whether the optimized program given by your group member runs faster than the original program?\nYou response should follow the following rules:\n1. Begin your response with [Agree] if you think the optimized program really runs faster than the original one and [Disagree] if not or there exists some syntax errors in the optimized program.\n2. Provide your comments after the keyword \"Comment:\" to explain your decision.\n3. Give suggestions for further improvements in comments.\nGive your response here:\n",
+            "instruction_parameters": [
+                "program",
+                "plan",
+                "opt_program"
+            ],
+            "condition": null,
+            "repeat": false,
+            "role": "reviewer",
+            "rd": 2,
+            "samples": false,
+            "code": false
+        },
+        {
+            "instruction": "A coder in your team implement an optimized version of program according to your plan:\n{opt_program}\n\nA code reviewer reviewed the optimized version and thinks that the optimization is {decision}.\nHe provides the following comments:\n{comment}\n\nCould you please refine your plan so that we can further improve the efficiency of the program?\nGive you plan here:\n",
+            "instruction_parameters": [
+                "opt_program",
+                "decision",
+                "comment"
+            ],
+            "condition": null,
+            "repeat": false,
+            "role": "leader",
+            "rd": 3,
+            "samples": false,
+            "code": false
+        },
+        {
+            "instruction": "After your optimized program is reviewed by another group member, your leader modifies his plan and gives a new plan here:\n{plan}\n\nCould you please write a new optimized version of the program based on the new plan?\n[regular_requirement]\n[trigger]",
+            "instruction_parameters": [
+                "plan"
+            ],
+            "condition": null,
+            "repeat": false,
+            "role": "coder",
+            "rd": 4,
+            "samples": false,
+            "code": true
+        }
+    ]
+}

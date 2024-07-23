@@ -1,0 +1,14 @@
+[
+    {
+        "opt_program": "def solution(x, shift):\n    s = str(x)\n    if shift > len(s):\n        return s[::-1]\n    else:\n        return s[-shift:] + s[:-shift]",
+        "ori_program": "def solution(s, shift):\n    s = str(x)\n    if shift > len(s):\n        return s[::-1]\n    else:\n        return s[len(s) - shift:] + s[:len(s) - shift]"
+    },
+    {
+        "opt_program": "def solution(s):\n    return s.count('std')",
+        "ori_program": "def solution(s):\n    count = 0\n    for i in range(len(s) - 2):\n        if s[i] == 's' and s[i + 1] == 't' and (s[i + 2] == 'd'):\n            count = count + 1\n    return count"
+    },
+    {
+        "opt_program": "def solution(n, str):\n    return [word for word in str.split() if len(word) > n]",
+        "ori_program": "def solution(n, str):\n    word_len = []\n    txt = str.split(' ')\n    for x in txt:\n        if len(x) > n:\n            word_len.append(x)\n    return word_len"
+    }
+]
