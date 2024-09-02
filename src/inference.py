@@ -1045,18 +1045,18 @@ def infer_all_local_models_for_all(output_path, device_num, n = 200, temperature
         #"NTU-NLP-sg/xCodeEval"
     ]
     models = [
-        #"/export/code-pretrain/yun/transformers/models--WizardLM--WizardCoder-15B-V1.0/snapshots/9c177589dec389eac2c8de51cbc371d45e47984e",
-        #"/export/code-pretrain/yun/transformers/models--WizardLM--WizardCoder-Python-13B-V1.0/snapshots/5ac6748b1f5a4c282107ddc7d3b69fdc4a686d75",
-        #"/export/code-pretrain/yun/transformers/models--codellama--CodeLlama-13b-Instruct-hf/snapshots/e9066d1322d2aba257d935c3e30e1ca483b84d1f",
-        #"/export/code-pretrain/yun/transformers/models--meta-llama--Llama-2-13b-hf/snapshots/dc1d3b3bfdb69df26f8fc966c16353274b138c55",
-        #"/export/code-pretrain/yun/transformers/models--meta-llama--Llama-2-13b-chat-hf/snapshots/c2f3ec81aac798ae26dcc57799a994dfbf521496",
-        #"/export/code-pretrain/yun/transformers/models--bigcode--starcoder/snapshots/b1af7f63dfbe5f2989b33399f1b99b58ff80a7d4",
-        #"/export/code-pretrain/yun/transformers/models--bigcode--starcoder2-15b/snapshots/e18a21d65bd99f46b2d0f3b5913ccd386744c0b5",
-        #"/export/code-pretrain/yun/transformers/models--Salesforce--xgen-7b-8k-inst/snapshots/943f44c31ffc2667253efca08a0cae7963333ce5",
-        #"/export/code-pretrain/yun/transformers/models--Salesforce--codegen25-7b-mono/snapshots/94ea6ac9084111cc36856624c11fc6f51a37e7de",
-        #"/export/code-pretrain/yun/transformers/models--google--gemma-7b-it/snapshots/b078e50c64458cf42df13eb97e368c00ce3a7b00",
-        #"/export/code-pretrain/yun/transformers/models--mistralai--Mixtral-8x7B-Instruct-v0.1/snapshots/1e637f2d7cb0a9d6fb1922f305cb784995190a83",
-        "/export/code-pretrain/yun/transformers/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/e5e23bbe8e749ef0efcf16cad411a7d23bd23298"
+        #"/transformers/models--WizardLM--WizardCoder-15B-V1.0/snapshots/9c177589dec389eac2c8de51cbc371d45e47984e",
+        #"/transformers/models--WizardLM--WizardCoder-Python-13B-V1.0/snapshots/5ac6748b1f5a4c282107ddc7d3b69fdc4a686d75",
+        #"/transformers/models--codellama--CodeLlama-13b-Instruct-hf/snapshots/e9066d1322d2aba257d935c3e30e1ca483b84d1f",
+        #"/transformers/models--meta-llama--Llama-2-13b-hf/snapshots/dc1d3b3bfdb69df26f8fc966c16353274b138c55",
+        #"/transformers/models--meta-llama--Llama-2-13b-chat-hf/snapshots/c2f3ec81aac798ae26dcc57799a994dfbf521496",
+        #"/transformers/models--bigcode--starcoder/snapshots/b1af7f63dfbe5f2989b33399f1b99b58ff80a7d4",
+        #"/transformers/models--bigcode--starcoder2-15b/snapshots/e18a21d65bd99f46b2d0f3b5913ccd386744c0b5",
+        #"/transformers/models--Salesforce--xgen-7b-8k-inst/snapshots/943f44c31ffc2667253efca08a0cae7963333ce5",
+        #"/transformers/models--Salesforce--codegen25-7b-mono/snapshots/94ea6ac9084111cc36856624c11fc6f51a37e7de",
+        #"/transformers/models--google--gemma-7b-it/snapshots/b078e50c64458cf42df13eb97e368c00ce3a7b00",
+        #"/transformers/models--mistralai--Mixtral-8x7B-Instruct-v0.1/snapshots/1e637f2d7cb0a9d6fb1922f305cb784995190a83",
+        "/transformers/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/e5e23bbe8e749ef0efcf16cad411a7d23bd23298"
     ]
 
     for m in models:
@@ -1066,17 +1066,17 @@ def infer_all_local_models_for_all(output_path, device_num, n = 200, temperature
 
 def infer_all_local_models_for_all_prompts(output_path, rd, inputs_file = None, sample_num = 20):
     models = [
-        "/export/code-pretrain/yun/transformers/models--WizardLM--WizardCoder-15B-V1.0/snapshots/9c177589dec389eac2c8de51cbc371d45e47984e",
-        #"/export/code-pretrain/yun/transformers/models--WizardLM--WizardCoder-Python-13B-V1.0/snapshots/5ac6748b1f5a4c282107ddc7d3b69fdc4a686d75",
-        #"/export/code-pretrain/yun/transformers/models--codellama--CodeLlama-13b-Instruct-hf/snapshots/e9066d1322d2aba257d935c3e30e1ca483b84d1f",
-        #"/export/code-pretrain/yun/transformers/models--meta-llama--Llama-2-13b-hf/snapshots/dc1d3b3bfdb69df26f8fc966c16353274b138c55",
-        #"/export/code-pretrain/yun/transformers/models--meta-llama--Llama-2-13b-chat-hf/snapshots/c2f3ec81aac798ae26dcc57799a994dfbf521496",
-        #"/export/code-pretrain/yun/transformers/models--bigcode--starcoder/snapshots/b1af7f63dfbe5f2989b33399f1b99b58ff80a7d4",
-        #"/export/code-pretrain/yun/transformers/models--bigcode--starcoder2-15b/snapshots/e18a21d65bd99f46b2d0f3b5913ccd386744c0b5",
-        #"/export/code-pretrain/yun/transformers/models--Salesforce--xgen-7b-8k-inst/snapshots/943f44c31ffc2667253efca08a0cae7963333ce5",
-        #"/export/code-pretrain/yun/transformers/models--Salesforce--codegen25-7b-mono/snapshots/94ea6ac9084111cc36856624c11fc6f51a37e7de",
-        #"/export/code-pretrain/yun/transformers/models--google--gemma-7b-it/snapshots/b078e50c64458cf42df13eb97e368c00ce3a7b00",
-        #"/export/code-pretrain/yun/transformers/models--mistralai--Mixtral-8x7B-Instruct-v0.1/snapshots/1e637f2d7cb0a9d6fb1922f305cb784995190a83"
+        "/transformers/models--WizardLM--WizardCoder-15B-V1.0/snapshots/9c177589dec389eac2c8de51cbc371d45e47984e",
+        #"/transformers/models--WizardLM--WizardCoder-Python-13B-V1.0/snapshots/5ac6748b1f5a4c282107ddc7d3b69fdc4a686d75",
+        #"/transformers/models--codellama--CodeLlama-13b-Instruct-hf/snapshots/e9066d1322d2aba257d935c3e30e1ca483b84d1f",
+        #"/transformers/models--meta-llama--Llama-2-13b-hf/snapshots/dc1d3b3bfdb69df26f8fc966c16353274b138c55",
+        #"/transformers/models--meta-llama--Llama-2-13b-chat-hf/snapshots/c2f3ec81aac798ae26dcc57799a994dfbf521496",
+        #"/transformers/models--bigcode--starcoder/snapshots/b1af7f63dfbe5f2989b33399f1b99b58ff80a7d4",
+        #"/transformers/models--bigcode--starcoder2-15b/snapshots/e18a21d65bd99f46b2d0f3b5913ccd386744c0b5",
+        #"/transformers/models--Salesforce--xgen-7b-8k-inst/snapshots/943f44c31ffc2667253efca08a0cae7963333ce5",
+        #"/transformers/models--Salesforce--codegen25-7b-mono/snapshots/94ea6ac9084111cc36856624c11fc6f51a37e7de",
+        #"/transformers/models--google--gemma-7b-it/snapshots/b078e50c64458cf42df13eb97e368c00ce3a7b00",
+        #"/transformers/models--mistralai--Mixtral-8x7B-Instruct-v0.1/snapshots/1e637f2d7cb0a9d6fb1922f305cb784995190a83"
     ]
 
     for m in models:
@@ -1164,14 +1164,14 @@ def delete_batch(model, ids):
 
 if __name__ == "__main__":
     model = "gpt-4"
-    #model = "/export/code-pretrain/yun/transformers/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/e5e23bbe8e749ef0efcf16cad411a7d23bd23298"
-    #model = "/export/code-pretrain/yun/transformers/models--meta-llama--Meta-Llama-3-70B-Instruct/snapshots/e8cf5276ae3e97cfde8a058e64a636f2cde47820"
-    #model = "/export/code-pretrain/yun/transformers/models--mistralai--Mixtral-8x7B-Instruct-v0.1/snapshots/1e637f2d7cb0a9d6fb1922f305cb784995190a83"
-    #model = "/export/code-pretrain/yun/transformers/models--microsoft--Phi-3-mini-128k-instruct/snapshots/f10fb29b79f038c78229ab4dcd9234a9666a770f"
-    #model = "/export/code-pretrain/yun/transformers/models--WizardLM--WizardCoder-Python-13B-V1.0/snapshots/5ac6748b1f5a4c282107ddc7d3b69fdc4a686d75"
-    #model = "/export/code-pretrain/yun/transformers/models--WizardLM--WizardCoder-15B-V1.0/snapshots/9c177589dec389eac2c8de51cbc371d45e47984e"
-    #model = "/export/code-pretrain/yun/transformers/models--Salesforce--codegen25-7b-mono/snapshots/94ea6ac9084111cc36856624c11fc6f51a37e7de"
-    #model = "/export/code-pretrain/yun/transformers/models--CohereForAI--c4ai-command-r-plus/snapshots/ba7f1d954c9d1609013677d87e4142ab95c34e62"
+    #model = "/transformers/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/e5e23bbe8e749ef0efcf16cad411a7d23bd23298"
+    #model = "/transformers/models--meta-llama--Meta-Llama-3-70B-Instruct/snapshots/e8cf5276ae3e97cfde8a058e64a636f2cde47820"
+    #model = "/transformers/models--mistralai--Mixtral-8x7B-Instruct-v0.1/snapshots/1e637f2d7cb0a9d6fb1922f305cb784995190a83"
+    #model = "/transformers/models--microsoft--Phi-3-mini-128k-instruct/snapshots/f10fb29b79f038c78229ab4dcd9234a9666a770f"
+    #model = "/transformers/models--WizardLM--WizardCoder-Python-13B-V1.0/snapshots/5ac6748b1f5a4c282107ddc7d3b69fdc4a686d75"
+    #model = "/transformers/models--WizardLM--WizardCoder-15B-V1.0/snapshots/9c177589dec389eac2c8de51cbc371d45e47984e"
+    #model = "/transformers/models--Salesforce--codegen25-7b-mono/snapshots/94ea6ac9084111cc36856624c11fc6f51a37e7de"
+    #model = "/transformers/models--CohereForAI--c4ai-command-r-plus/snapshots/ba7f1d954c9d1609013677d87e4142ab95c34e62"
     #wait_available_gpu(num=4)
     #infer_openai_model("gpt-4", "openai_humaneval", "./results_temp0")
     #infer_openai_model_for_all("gpt-4", "./results")
@@ -1193,8 +1193,3 @@ if __name__ == "__main__":
     #download_file(model, ['batch_rcMhrnxmRj0LWJvoDegdOBvM', 'batch_WOhKEZnW9VnMIkQDf3SyLnvC', 'batch_0FUTxfvuZ3weL94Fo9TQ8v7d', 'batch_pDuDmLnGKa6VI1QSLujZ5dLE', 'batch_bCpR9gYjabkyT6v66t8zHMG1', 'batch_W1Wofb802JywtmfuLT1ibXDA', 'batch_50QIw8xzJtot1gRJjORWZ2kY', 'batch_LPujDfW2qLAQm8NBV5wX4iKq'])
     #delete_batch(model, ['batch_noFR9fgsU1yl76cgs5Ebqy6x', 'batch_gjgLUuxTrk6uisl58n0gqPGz'])
     #test()
-
-    
-    
-
-

@@ -510,7 +510,7 @@ class ChatPromptEvaluator(object):
 
     def evaluate_correctness(self, result_dir):
         models = [
-            "_export_code-pretrain_yun_transformers_models--meta-llama--Meta-Llama-3-70B-Instruct_snapshots_e8cf5276ae3e97cfde8a058e64a636f2cde47820",
+            "_transformers_models--meta-llama--Meta-Llama-3-70B-Instruct_snapshots_e8cf5276ae3e97cfde8a058e64a636f2cde47820",
             "gpt-3.5-turbo"
         ]
         results = {}
@@ -1471,11 +1471,11 @@ class ChatPromptEvaluator(object):
 
     def evaluate_execution_time_for_all(self):
         models = [
-            "_export_code-pretrain_yun_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62",
-            "_export_code-pretrain_yun_transformers_models--meta-llama--Meta-Llama-3-8B-Instruct_snapshots_e5e23bbe8e749ef0efcf16cad411a7d23bd23298",
-            "_export_code-pretrain_yun_transformers_models--meta-llama--Meta-Llama-3-70B-Instruct_snapshots_e8cf5276ae3e97cfde8a058e64a636f2cde47820",
-            "_export_code-pretrain_yun_transformers_models--microsoft--Phi-3-mini-128k-instruct_snapshots_f10fb29b79f038c78229ab4dcd9234a9666a770f",
-            "_export_code-pretrain_yun_transformers_models--mistralai--Mixtral-8x7B-Instruct-v0.1_snapshots_1e637f2d7cb0a9d6fb1922f305cb784995190a83",
+            "_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62",
+            "_transformers_models--meta-llama--Meta-Llama-3-8B-Instruct_snapshots_e5e23bbe8e749ef0efcf16cad411a7d23bd23298",
+            "_transformers_models--meta-llama--Meta-Llama-3-70B-Instruct_snapshots_e8cf5276ae3e97cfde8a058e64a636f2cde47820",
+            "_transformers_models--microsoft--Phi-3-mini-128k-instruct_snapshots_f10fb29b79f038c78229ab4dcd9234a9666a770f",
+            "_transformers_models--mistralai--Mixtral-8x7B-Instruct-v0.1_snapshots_1e637f2d7cb0a9d6fb1922f305cb784995190a83",
             "gpt-3.5-turbo",
             #"gpt-4"
         ]
@@ -1488,11 +1488,11 @@ class ChatPromptEvaluator(object):
     def combine_execution_time_results_for_models(self, fallback = True, best = "20"):
         results = {}
         models = [
-            "_export_code-pretrain_yun_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62",
-            "_export_code-pretrain_yun_transformers_models--meta-llama--Meta-Llama-3-8B-Instruct_snapshots_e5e23bbe8e749ef0efcf16cad411a7d23bd23298",
-            "_export_code-pretrain_yun_transformers_models--meta-llama--Meta-Llama-3-70B-Instruct_snapshots_e8cf5276ae3e97cfde8a058e64a636f2cde47820",
-            "_export_code-pretrain_yun_transformers_models--microsoft--Phi-3-mini-128k-instruct_snapshots_f10fb29b79f038c78229ab4dcd9234a9666a770f",
-            "_export_code-pretrain_yun_transformers_models--mistralai--Mixtral-8x7B-Instruct-v0.1_snapshots_1e637f2d7cb0a9d6fb1922f305cb784995190a83",
+            "_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62",
+            "_transformers_models--meta-llama--Meta-Llama-3-8B-Instruct_snapshots_e5e23bbe8e749ef0efcf16cad411a7d23bd23298",
+            "_transformers_models--meta-llama--Meta-Llama-3-70B-Instruct_snapshots_e8cf5276ae3e97cfde8a058e64a636f2cde47820",
+            "_transformers_models--microsoft--Phi-3-mini-128k-instruct_snapshots_f10fb29b79f038c78229ab4dcd9234a9666a770f",
+            "_transformers_models--mistralai--Mixtral-8x7B-Instruct-v0.1_snapshots_1e637f2d7cb0a9d6fb1922f305cb784995190a83",
             "gpt-3.5-turbo",
             "gpt-4"
         ]
@@ -1543,7 +1543,7 @@ class ChatPromptEvaluator(object):
 
     def combine_execution_time_results_for_prompts(self, fallback = True, best = "20"):
         models = [
-            "_export_code-pretrain_yun_transformers_models--meta-llama--Meta-Llama-3-70B-Instruct_snapshots_e8cf5276ae3e97cfde8a058e64a636f2cde47820",
+            "_transformers_models--meta-llama--Meta-Llama-3-70B-Instruct_snapshots_e8cf5276ae3e97cfde8a058e64a636f2cde47820",
             "gpt-3.5-turbo"
         ]
 
@@ -1657,15 +1657,15 @@ if __name__ == "__main__":
     #evaluator.run_correctness_check("prompt_chat_results/gpt-4/time/rd1_SOLUTIONS.json", task_index = 4, task_num = 5)
     #evaluator.finalize_correctness_check("prompt_chat_results", "gpt-4", "time", 1, clean = True)
     #evaluator.finalize_time_measurement("prompt_chat_results", "gpt-4", "time", rd = None)
-    #evaluator.prepare_time_measurement("prompt_chat_results", "_export_code-pretrain_yun_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62", "time", 0)
+    #evaluator.prepare_time_measurement("prompt_chat_results", "_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62", "time", 0)
     #evaluator.run_time_measurement("prompt_chat_results/gpt-4/time/FINAL_PASSED_SOLUTIONS.json", task_index = 39, task_num = 40)
     #evaluator.update_history("prompt_chat_results", "gpt-4", "time", 0)
     #evaluator.check_history("prompt_chat_results", "gpt-3.5-turbo", "correctness", 1)
-    #evaluator.gather_all_solutions_for_time("prompt_chat_results", "_export_code-pretrain_yun_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62")
-    #evaluator.gather_correct_solutions_and_history("prompt_chat_results", "_export_code-pretrain_yun_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62", "correctness", "correctness_reflection_and_feedback", "time")
-    #evaluator.evaluate_pass_rate("prompt_chat_results", "_export_code-pretrain_yun_transformers_models--mistralai--Mixtral-8x7B-Instruct-v0.1_snapshots_1e637f2d7cb0a9d6fb1922f305cb784995190a83", "time", rd = 1)
+    #evaluator.gather_all_solutions_for_time("prompt_chat_results", "_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62")
+    #evaluator.gather_correct_solutions_and_history("prompt_chat_results", "_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62", "correctness", "correctness_reflection_and_feedback", "time")
+    #evaluator.evaluate_pass_rate("prompt_chat_results", "_transformers_models--mistralai--Mixtral-8x7B-Instruct-v0.1_snapshots_1e637f2d7cb0a9d6fb1922f305cb784995190a83", "time", rd = 1)
     #evaluator.evaluate_execution_time("prompt_chat_results", "gpt-4", "time", fallback = True)
-    #evaluator.evaluate_execution_time("prompt_chat_results", "_export_code-pretrain_yun_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62", "time", fallback = True)
+    #evaluator.evaluate_execution_time("prompt_chat_results", "_transformers_models--CohereForAI--c4ai-command-r-plus_snapshots_ba7f1d954c9d1609013677d87e4142ab95c34e62", "time", fallback = True)
     #evaluator.evaluate_execution_time_for_all()
     #evaluator.combine_execution_time_results_for_models(fallback = True, best = "20")
     #evaluator.combine_execution_time_results_for_prompts(fallback = True, best = "1")
@@ -1674,10 +1674,10 @@ if __name__ == "__main__":
     '''
     evaluator.combine_results("prompt_chat_results", 
     [
-        "_export_code-pretrain_yun_transformers_models--meta-llama--Meta-Llama-3-8B-Instruct_snapshots_e5e23bbe8e749ef0efcf16cad411a7d23bd23298",
-        "_export_code-pretrain_yun_transformers_models--meta-llama--Meta-Llama-3-70B-Instruct_snapshots_e8cf5276ae3e97cfde8a058e64a636f2cde47820",
-        "_export_code-pretrain_yun_transformers_models--microsoft--Phi-3-mini-128k-instruct_snapshots_f10fb29b79f038c78229ab4dcd9234a9666a770f",
-        "_export_code-pretrain_yun_transformers_models--mistralai--Mixtral-8x7B-Instruct-v0.1_snapshots_1e637f2d7cb0a9d6fb1922f305cb784995190a83",
+        "_transformers_models--meta-llama--Meta-Llama-3-8B-Instruct_snapshots_e5e23bbe8e749ef0efcf16cad411a7d23bd23298",
+        "_transformers_models--meta-llama--Meta-Llama-3-70B-Instruct_snapshots_e8cf5276ae3e97cfde8a058e64a636f2cde47820",
+        "_transformers_models--microsoft--Phi-3-mini-128k-instruct_snapshots_f10fb29b79f038c78229ab4dcd9234a9666a770f",
+        "_transformers_models--mistralai--Mixtral-8x7B-Instruct-v0.1_snapshots_1e637f2d7cb0a9d6fb1922f305cb784995190a83",
         "gpt-3.5-turbo"
     ],
     ["pass_rate"]
