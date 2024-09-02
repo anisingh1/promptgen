@@ -7,6 +7,25 @@ Blogpost on PerfCodeGen: ![Blog](TODO)
 
 ![Diagram](./diagram.png)
 
+## Table of Contents
+
+- [Overview](#overview)
+  - [Goal](#goal)
+  - [Approach](#approach)
+  - [Key Result](#key-result)
+- [Instructions to Replicate PerfCodeGen](#instructions-to-replicate-perfcodegen)
+  - [0. Base Code Generation Phase](#0-base-code-generation-phase)
+    - [0.1 Inference](#01-inference)
+    - [0.2 Program Evaluation](#02-program-evaluation)
+  - [1. Correctness Improving Phase](#1-correctness-improving-phase)
+    - [1.1 Inference](#11-inference)
+    - [1.2 Program Evaluation](#12-program-evaluation)
+  - [2. Performance/Efficiency Improving Phase](#2-performanceefficiency-improving-phase)
+    - [2.1 Inference](#21-inference)
+    - [2.2 Program Evaluation](#22-program-evaluation)
+- [Citation](#citation)
+- [TODOs](#todos)
+
 ## Overview
 
 ### Goal
@@ -14,7 +33,7 @@ PerfCodeGen is a training-free framework designed to generate optimal code using
 
 ### Approach
 We apply a straightforward strategy to optimise for performance of LLM generated code along with functional correctness in two phases: 
-- Correctness phase: Given a task description, we first prompt the LLM to generate a candidate solution that is assessed (and self-refined on failure) for correctness by the LLM. 
+- Correctness phase: Given a task description, we first prompt the LLM to generate a candidate solution that is assessed for correctness and self-refined by the LLM on failure. 
 - Performance refinement phase: After obtaining a functionally correct solution, we perform a self-refine round for runtime-efficiency and conduct a performance assessment using an execution environment to identify the expensive unit tests. The observations from this execution are then passed as verbalised performance feedback to the LLM to re-refine for efficiency.
 
 ### Key result 
@@ -162,6 +181,6 @@ Execution time evaluation can be conducted only under the following two cases:
 
 #### TODOs
 
-- remove DS_STORE files
+<!-- - remove DS_STORE files -->
 - arxiv link
 - blog link
