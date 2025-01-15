@@ -1,9 +1,11 @@
 
 # PerfCodeGen
 
-Official repository to replicate the setup and experiments from our work [PerfCodeGen: Improving Performance of LLM Generated Code with Execution Feedback](TODO).
+Official repository to replicate the setup and experiments from our work [PerfCodeGen: Improving Performance of LLM Generated Code with Execution Feedback](https://arxiv.org/abs/2412.03578).
 
-Blogpost on PerfCodeGen: ![Blog](TODO)
+PerfCodeGen has been accepted to the [International Conference on AI Foundation Models and Software Engineering (FORGE 2025) @ ICSE](https://conf.researchr.org/home/forge-2025)!
+
+<!--Blogpost on PerfCodeGen: ![Blog](TODO)-->
 
 ![Diagram](./diagram.png)
 
@@ -24,7 +26,7 @@ Blogpost on PerfCodeGen: ![Blog](TODO)
     - [2.1 Inference](#21-inference)
     - [2.2 Program Evaluation](#22-program-evaluation)
 - [Citation](#citation)
-- [TODOs](#todos)
+<!-- - [TODOs](#todos) -->
 
 ## Overview
 
@@ -179,16 +181,16 @@ Execution time evaluation can be conducted only under the following two cases:
 #### Citation
 
 ```latex
-@article{zhu2024deepseek,
+@article{peng2024perfcodegen,
   title={PerfCodeGen: Improving Performance of LLM Generated Code with Execution Feedback},
   author={Peng, Yun and Gotmare, Akhilesh Deepak and Xiong, Caiming and Savarese, Silvio and Lyu, Michael and Sahoo, Doyen},
-  journal={arXiv preprint arXiv:TODO},
+  journal={arXiv preprint arXiv:2412.03578},
   year={2024}
 }
 ```
 
-#### TODOs
+<!--#### TODOs -->
 
 <!-- - remove DS_STORE files -->
-- arxiv link
-- blog link
+<!-- - arxiv link -->
+<!-- - blog link -->
