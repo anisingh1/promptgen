@@ -184,8 +184,8 @@ Execution time evaluation can be conducted only under the following two cases:
 @article{peng2024perfcodegen,
   title={PerfCodeGen: Improving Performance of LLM Generated Code with Execution Feedback},
   author={Peng, Yun and Gotmare, Akhilesh Deepak and Xiong, Caiming and Savarese, Silvio and Lyu, Michael and Sahoo, Doyen},
-  journal={arXiv preprint arXiv:2412.03578},
-  year={2024}
+  journal={The 2nd ACM International Conference on AI Foundation Models and Software Engineering (FORGE 2025) in ICSE 2025},
+  year={2025}
 }
 ```
 
