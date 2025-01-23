@@ -1,6 +1,6 @@
 from model import RemoteModel, LocalModel
 from dataset import Dataset
-from utils import logger
+from python_utils import logger
 from prompt import Prompt
 import os
 import json

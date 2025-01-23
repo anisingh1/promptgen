@@ -1,12 +1,11 @@
 import os
-from openai import OpenAI
+from openai import OpenAI, AsyncAzureOpenAI
 import timeout_decorator
 from tqdm import tqdm
-from utils import logger
+from python_utils import logger
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
-if torch.cuda.is_available():
-    from vllm import LLM, SamplingParams
+from vllm import LLM, SamplingParams
 import traceback
 import math
 import ray
@@ -35,13 +34,23 @@ models = [
 class RemoteModel(object):
     def __init__(self, model) -> None:
         if "gpt" in model:
-            if "OPENAI_KEY" not in os.environ:
-                print("Cannot find OPENAI_KEY, please set this variable in your shell.")
+            if "OPENAI_KEY" in os.environ:
+                self.apikey = os.environ["OPENAI_KEY"]
+                self.client = OpenAI(api_key = self.apikey)
+                self.model = model
+            elif "AZURE_OPENAI_API_KEY" in os.environ and "AZURE_OPENAI_ENDPOINT" in os.environ and "AZURE_OPENAI_API_VERSION" in os.environ and "AZURE_OPENAI_DEPLOYMENT" in os.environ:
+                self.apikey = os.environ["AZURE_OPENAI_API_KEY"]
+                self.client = AsyncAzureOpenAI(
+                    api_key=self.apikey,
+                    api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
+                    azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT"),
+                    azure_deployment=os.getenv("AZURE_OPENAI_DEPLOYMENT")
+                )
+                self.model = os.getenv("AZURE_OPENAI_DEPLOYMENT")
+            else:
+                print("Cannot find OPENAI_KEY or AZURE_OPENAI_API_KEY, please set this variable in your shell.")
                 exit()
-            self.apikey = os.environ["OPENAI_KEY"]
-            self.client = OpenAI(api_key = self.apikey)
         self.temperature = 0.7
-        self.model = model
 
     def upload_file(self, filename):
         response = self.client.files.create(
@@ -256,16 +265,13 @@ class LocalModel(object):
                 iters = math.ceil(n/10)
                 predictions = []
                 for i in range(0, iters):
-                    outputs = self.model.generate(prompt, self.sampling_params)
+                    outputs = self.model.generate(prompt_token_ids = prompt_tokens, sampling_params=self.sampling_params)
                     for o in outputs[0].outputs:
                         predictions.append(o.text)
             return predictions
         except Exception as e:
             logger.error("Error occurred with reason {} for prompt:\n{}".format(str(e), dialog[0]["content"]))
             return str(e)
-
-
-
 
     def infer_many(self, prompts, temperature = 0.7, n = 200):
         self.sampling_params = SamplingParams(temperature=temperature, n = n, max_tokens = 512)
