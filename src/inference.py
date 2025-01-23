@@ -1064,27 +1064,6 @@ def infer_all_local_models_for_all(output_path, device_num, n = 200, temperature
         for d in code_datasets:
             batch_infer_local_model(model, d, output_path, device_num, n = n, temperature = temperature, dataset_repo = dataset_repo, chat = True if "chat" in model.name else False, context_length = 2048 if "codegen25" in model.name else 8192)
 
-def infer_all_local_models_for_all_prompts(output_path, rd, inputs_file = None, sample_num = 20):
-    models = [
-        "/transformers/models--WizardLM--WizardCoder-15B-V1.0/snapshots/9c177589dec389eac2c8de51cbc371d45e47984e",
-        #"/transformers/models--WizardLM--WizardCoder-Python-13B-V1.0/snapshots/5ac6748b1f5a4c282107ddc7d3b69fdc4a686d75",
-        #"/transformers/models--codellama--CodeLlama-13b-Instruct-hf/snapshots/e9066d1322d2aba257d935c3e30e1ca483b84d1f",
-        #"/transformers/models--meta-llama--Llama-2-13b-hf/snapshots/dc1d3b3bfdb69df26f8fc966c16353274b138c55",
-        #"/transformers/models--meta-llama--Llama-2-13b-chat-hf/snapshots/c2f3ec81aac798ae26dcc57799a994dfbf521496",
-        #"/transformers/models--bigcode--starcoder/snapshots/b1af7f63dfbe5f2989b33399f1b99b58ff80a7d4",
-        #"/transformers/models--bigcode--starcoder2-15b/snapshots/e18a21d65bd99f46b2d0f3b5913ccd386744c0b5",
-        #"/transformers/models--Salesforce--xgen-7b-8k-inst/snapshots/943f44c31ffc2667253efca08a0cae7963333ce5",
-        #"/transformers/models--Salesforce--codegen25-7b-mono/snapshots/94ea6ac9084111cc36856624c11fc6f51a37e7de",
-        #"/transformers/models--google--gemma-7b-it/snapshots/b078e50c64458cf42df13eb97e368c00ce3a7b00",
-        #"/transformers/models--mistralai--Mixtral-8x7B-Instruct-v0.1/snapshots/1e637f2d7cb0a9d6fb1922f305cb784995190a83"
-    ]
-
-    for m in models:
-        if inputs_file == None:
-            inputs_file = os.path.join(output_path, f"rd{rd-1}", m.replace("/", "_") + "_next_inputs.json")
-        model = LocalModel(m, "0", tensor_parallel_size = 8 if "Mixtral" in m else 4, n = sample_num)
-        #model = None
-        batch_infer_local_model_prompts(model, rd, output_path, inputs_file, sample_num, context_length = 2048 if "codegen25" in model.name else 8192)
 
 def test():
     data = json.load(open("prompt_chat_results/gpt-3.5-turbo/time/rd0_batch_outputs.json", "r"))
@@ -1097,67 +1076,6 @@ def test():
                 print(input_data["custom_id"])
                 if "time_simple_execution_feedback" in input_data["custom_id"] or "time_execution_feedback_with_testcase" in input_data["custom_id"]:
                     print("!!!!")
-
-
-def upload_file(model, prefix, num):
-    model = RemoteModel(model)
-    ids = []
-    for i in range(0, num):
-        response = model.upload_file(f"{prefix}{i}.jsonl")
-        ids.append(response.id)
-    print(ids)
-
-def delete_file(model, ids):
-    model = RemoteModel(model)
-    for i in ids:
-        model.delete_file(i)
-
-def download_file(model, ids):
-    model = RemoteModel(model)
-    contents = []
-    for i in ids:
-        contents += model.download_file(i)
-    data = {}
-    for d in contents:
-        data[d["custom_id"]] = d["response"]["body"]["choices"][0]["message"]
-    
-    errors = []
-    for i in ids:
-        errors += model.collect_errors(i)
-    
-    for e in errors:
-        data[e["custom_id"]] = None
-
-    with open("prompt_chat_results/gpt-4/time/rd1_batch_outputs.json", "w", encoding = "utf-8") as f:
-        f.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
-
-
-def batch_run(model, ids):
-    model = RemoteModel(model)
-    batch_ids = []
-    for i in ids:
-        response = model.batch_run(i)
-        batch_ids.append(response.id)
-    print(batch_ids)
-
-def batch_status(model, ids):
-    model = RemoteModel(model)
-    for i in ids:
-        model.batch_status(i)
-
-def cancel_batch(model, ids):
-    model = RemoteModel(model)
-    for i in ids:
-        response = model.batch_status(i)
-        if response.status not in ["failed", "cancelling"]:
-            model.cancel_batch(i)
-
-def delete_batch(model, ids):
-    model = RemoteModel(model)
-    for i in ids:
-        response = model.delete_batch(i)
-
-
 
 
 
@@ -1181,7 +1099,6 @@ if __name__ == "__main__":
     #batch_infer_local_prompt_model(model, "correctness", 0, "prompt_model_results/_export_code-pretrain_yun_transformers_models--WizardLM--WizardCoder-Python-13B-V1.0_snapshots_5ac6748b1f5a4c282107ddc7d3b69fdc4a686d75/correctness/rd0_batch_inputs.json", "prompt_model_results")
     #infer_local_model_for_all("./transformers/models--WizardLM--WizardCoder-15B-V1.0/snapshots/9c177589dec389eac2c8de51cbc371d45e47984e", "./results", "0")
     #infer_all_local_models_for_all("./results", "0", n = 20, temperature = 0.7, dataset_repo = "test_datasets")
-    #infer_all_local_models_for_all_prompts("prompt_results2", 2)#, "results_sample1000/best_inputs.json")
     infer_openai_model_prompts(model, "time", 1, "prompt_chat_results", f"prompt_chat_results/gpt-4/time/rd0.json", 20, batch_split = True, checked_inputs_file = "prompt_chat_results/gpt-4/time/rd0_CHECKED.json", history_file = "prompt_chat_results/gpt-4/time/rd1_HISTORY.json")
     #infer_openai_model_prompts(model, "time", 4, "prompt_chat_results", f"prompt_chat_results/gpt-3.5-turbo/time/rd3.json", 20, batch_split = True, checked_inputs_file = f"prompt_chat_results/gpt-3.5-turbo/time/rd3_CHECKED.json", history_file = "prompt_chat_results/gpt-3.5-turbo/time/rd4_HISTORY.json", leader_history_file = "prompt_chat_results/gpt-3.5-turbo/time/rd4_HISTORY_LEADER.json", reviewer_history_file = "prompt_chat_results/gpt-3.5-turbo/time/rd4_HISTORY_REVIEWER.json")
     #upload_file(model, "prompt_chat_results/gpt-4/time/rd1_batch_inputs_", 10)

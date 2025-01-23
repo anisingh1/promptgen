@@ -367,7 +367,6 @@ class Evaluator(object):
         print("Verification completed, Pass: {}, Fail: {}.".format(success, len(self.dataset.prompt2instance) - success))
         
 
-
     def execute_code(self, code, io, testcases, check = True, fast_check = False, total_timeout = 10):
         if len(testcases) == 0:
             raise ValueError("No testcase to be executed.")

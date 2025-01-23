@@ -52,76 +52,6 @@ class RemoteModel(object):
                 exit()
         self.temperature = 0.7
 
-    def upload_file(self, filename):
-        response = self.client.files.create(
-            file=open(filename, "rb"),
-            purpose="batch"
-        )
-        print(response)
-        return response
-
-    def delete_file(self, file_id):
-        response = self.client.files.delete(file_id)
-        print(response)
-        return response
-
-    def download_file(self, batch_id):
-        response = self.client.batches.retrieve(batch_id)
-        if response.status != "completed":
-            raise ValueError("The batch is not completed and its status is {}.".format(response.status))
-        output_file = response.output_file_id
-        content = self.client.files.content(output_file)
-        contents = content.content.splitlines()
-        outputs = []
-        for line in contents:
-            outputs.append(json.loads(line))
-        return outputs
-
-    def collect_errors(self, batch_id):
-        response = self.client.batches.retrieve(batch_id)
-        if response.status != "completed":
-            raise ValueError("The batch is not completed and its status is {}.".format(response.status))
-        error_file = response.error_file_id
-        if error_file == None:
-            return []
-        content = self.client.files.content(error_file)
-        contents = content.content.splitlines()
-        outputs = []
-        for line in contents:
-            outputs.append(json.loads(line))
-        return outputs
-        
-    def batch_run(self, file_id):
-        response = self.client.batches.create(
-            input_file_id=file_id,
-            endpoint="/v1/chat/completions",
-            completion_window="24h"
-        )
-        print(response)
-        return response
-
-    def batch_status(self, batch_id):
-        response = self.client.batches.retrieve(batch_id)
-        print(response)
-        return response
-
-    def cancel_batch(self, batch_id):
-        response = self.client.batches.cancel(batch_id)
-        print(response)
-        return response
-
-    def delete_batch(self, batch_id):
-        response = self.client.batches.retrieve(batch_id)
-        if response.input_file_id != None:
-            r = self.client.files.delete(response.input_file_id )
-            print(r)
-        if response.error_file_id != None:
-            r = self.client.files.delete(response.error_file_id)
-            print(r)
-        if response.output_file_id != None:
-            r = self.client.files.delete(response.output_file_id)
-            print(r)
-
 
     def build_messages(self, prompt):
         messages = [
@@ -233,6 +163,7 @@ class LocalModel(object):
 
         return prompt_tokens
         
+        
     def infer_one(self, prompt, n = 10):
         try:
             if n <= 10:
@@ -273,6 +204,7 @@ class LocalModel(object):
             logger.error("Error occurred with reason {} for prompt:\n{}".format(str(e), dialog[0]["content"]))
             return str(e)
 
+
     def infer_many(self, prompts, temperature = 0.7, n = 200):
         self.sampling_params = SamplingParams(temperature=temperature, n = n, max_tokens = 512)
         predictions = {}
@@ -288,6 +220,7 @@ class LocalModel(object):
             logger.error("Error occurred with reason {} when processing multiple prompts".format(str(e)))
             print(traceback.print_exc())
             return str(e)
+
 
     def infer_many_chats(self, dialogs, n = 10):
         prompt_tokens = self.format_chats(dialogs, pad = True)
