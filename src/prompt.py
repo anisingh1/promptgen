@@ -1,7 +1,6 @@
 import json
 
 
-
 class Prompt(object):
     def __init__(self, chat = False):
         self.templates = {}
